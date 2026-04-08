@@ -1,4 +1,10 @@
 node_modules/
+dashboard/node_modules/
+dashboard/.next/
+dasboard/.env
+dashboard/dist/
+dashboard/.DS_Store
+dashboard/env.local
 *.db
 .env
 dist/
