@@ -36,17 +36,30 @@ export async function initDb(): Promise<void> {
     `);
 
     await client.query(`
+        CREATE UNIQUE INDEX IF NOT EXISTS idx_events_unique
+        ON events (user_id, event_type, timestamp)
+        WHERE user_id IS NOT NULL;
+    `);
+
+    await client.query(`
+        CREATE UNIQUE INDEX IF NOT EXISTS idx_events_system_unique
+        ON events (event_type, timestamp, message)
+        WHERE user_id IS NULL;
+    `);
+
+    await client.query(`
       CREATE TABLE IF NOT EXISTS sessions (
         id           SERIAL PRIMARY KEY,
         user_id      INTEGER REFERENCES users(id) ON DELETE CASCADE,
         ip_address   VARCHAR(45),
         login_at     TIMESTAMPTZ NOT NULL,
         logout_at    TIMESTAMPTZ,
-        duration_sec INTEGER
+        duration_sec INTEGER,
+        UNIQUE (user_id, login_at)
       );
     `);
 
-    console.log('✓ Database tables ready');
+    console.log('OK: Database tables ready');
   } finally {
     client.release();
   }
