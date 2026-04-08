@@ -1,11 +1,12 @@
 {
   "name": "vpn-validator",
-  "version": "1.2.0",
+  "version": "1.1.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "parse": "ts-node src/parse.ts"
+    "parse": "ts-node src/parse.ts",
+    "server": "ts-node src/server.ts"
   },
   "keywords": [],
   "author": "",
