@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "parse": "ts-node src/parse.ts",
     "server": "ts-node src/server.ts"
   },
@@ -22,7 +24,9 @@
   "devDependencies": {
     "@types/node": "^25.5.2",
     "@types/pg": "^8.20.0",
+    "@vitest/coverage-v8": "^4.1.3",
     "ts-node": "^10.9.2",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.3"
   }
 }
