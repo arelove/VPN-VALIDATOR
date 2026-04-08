@@ -31,18 +31,23 @@ export function buildApp() {
   });
 
   app.get('/api/stats', async (_, reply) => {
-    const [users, events, errors, avgSession] = await Promise.all([
-      pool.query(`SELECT COUNT(DISTINCT id) AS count FROM users`),
-      pool.query(`SELECT COUNT(*) AS count FROM events`),
-      pool.query(`SELECT COUNT(*) AS count FROM events WHERE level = 'ERROR'`),
-      pool.query(`SELECT ROUND(AVG(duration_sec)) AS avg_sec FROM sessions`),
-    ]);
-    return reply.send({
-      totalUsers:    Number(users.rows[0].count),
-      totalEvents:   Number(events.rows[0].count),
-      totalErrors:   Number(errors.rows[0].count),
-      avgSessionSec: Number(avgSession.rows[0].avg_sec),
-    });
+
+    try {
+      const [users, events, errors, avgSession] = await Promise.all([
+        pool.query(`SELECT COUNT(DISTINCT id) AS count FROM users`),
+        pool.query(`SELECT COUNT(*) AS count FROM events`),
+        pool.query(`SELECT COUNT(*) AS count FROM events WHERE level = 'ERROR'`),
+        pool.query(`SELECT ROUND(AVG(duration_sec)) AS avg_sec FROM sessions`),
+      ]);
+      return reply.send({
+        totalUsers:    Number(users.rows[0].count),
+        totalEvents:   Number(events.rows[0].count),
+        totalErrors:   Number(errors.rows[0].count),
+        avgSessionSec: Number(avgSession.rows[0].avg_sec),
+      });
+      } catch (err) {
+        reply.status(500).send({ error: 'Database error' });
+    }
   });
 
   return app;
