@@ -95,6 +95,30 @@ describe('parseLine', () => {
   });
 });
 
+describe('parseLine — edge cases', () => {
+  it('LOGIN без IP не падает', () => {
+    const line = 'Jan 12 08:50:10 vpn-gateway app[4000]: INFO User user4 logged in';
+    const event = parseLine(line);
+    expect(event!.eventType).toBe('LOGIN');
+    expect(event!.username).toBe('user4');
+    expect(event!.ipAddress).toBeNull();
+  });
+
+  it('timestamp невалидный не крашит функцию', () => {
+    const line = 'Jan 99 99:99:99 vpn-gateway app[4000]: ERROR Something failed';
+    const event = parseLine(line);
+    expect(event).not.toBeNull();
+    expect(isNaN(event!.timestamp.getTime())).toBe(true);
+  });
+
+  it('очень длинное сообщение парсится корректно', () => {
+    const msg = 'A'.repeat(1000);
+    const line = `Jan 12 08:50:10 vpn-gateway app[4000]: ERROR ${msg}`;
+    const event = parseLine(line);
+    expect(event!.message).toBe(msg);
+  });
+});
+
 // ─── resolveYear ─────────────────────────────────────────────
 
 describe('resolveYear', () => {

@@ -73,3 +73,33 @@ describe('GET /api/events', () => {
     expect(body[0].level).toBe('INFO');
   });
 });
+
+describe('обработка ошибок БД', () => {
+  it('GET /api/stats возвращает 500 при ошибке БД', async () => {
+    (pool.query as any).mockRejectedValueOnce(new Error('DB connection lost'));
+
+    const app = buildApp();
+    const res = await app.inject({ method: 'GET', url: '/api/stats' });
+
+    expect(res.statusCode).toBe(500);
+    expect(res.json().error).toBe('Database error');
+  });
+
+  it('GET /api/sessions возвращает 500 при ошибке БД', async () => {
+    (pool.query as any).mockRejectedValueOnce(new Error('DB connection lost'));
+
+    const app = buildApp();
+    const res = await app.inject({ method: 'GET', url: '/api/sessions' });
+
+    expect(res.statusCode).toBe(500);
+  });
+
+  it('GET /api/events возвращает 500 при ошибке БД', async () => {
+    (pool.query as any).mockRejectedValueOnce(new Error('DB connection lost'));
+
+    const app = buildApp();
+    const res = await app.inject({ method: 'GET', url: '/api/events' });
+
+    expect(res.statusCode).toBe(500);
+  });
+});
