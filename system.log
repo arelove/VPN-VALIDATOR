@@ -1,0 +1,208 @@
+Jan 12 08:00:01 vpn-gateway systemd[1]: Started Session Manager.
+Jan 12 08:01:12 vpn-gateway sshd[1001]: Accepted password for user1 from 192.168.1.10 port 50001 ssh2
+Jan 12 08:01:13 vpn-gateway systemd-logind[500]: New session 1 of user user1.
+Jan 12 08:03:45 vpn-gateway nginx[3000]: 192.168.1.20 - - [12/Jan/2026:08:03:45 +0000] "GET / HTTP/1.1" 200 512
+Jan 12 08:05:00 vpn-gateway cron[900]: (root) CMD (daily.sh)
+Jan 12 08:10:11 vpn-gateway sshd[1001]: Disconnected from user user1 192.168.1.10 port 50001
+Jan 12 08:10:12 vpn-gateway systemd-logind[500]: Removed session 1.
+
+Jan 12 08:12:22 vpn-gateway openvpn[2000]: user2 CONNECTED, assigned IP 10.8.0.2
+Jan 12 08:15:33 vpn-gateway kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=10.0.0.2 DST=192.168.1.1
+Jan 12 08:20:44 vpn-gateway openvpn[2000]: user2 DISCONNECTED
+
+Jan 12 08:25:01 vpn-gateway sshd[1002]: Accepted publickey for user3 from 192.168.1.11 port 50002 ssh2
+Jan 12 08:25:02 vpn-gateway systemd-logind[500]: New session 2 of user user3.
+Jan 12 08:40:00 vpn-gateway sshd[1002]: Disconnected from user user3 192.168.1.11 port 50002
+Jan 12 08:40:01 vpn-gateway systemd-logind[500]: Removed session 2.
+
+Jan 12 08:50:10 vpn-gateway app[4000]: INFO User user4 logged in from 192.168.1.50
+Jan 12 09:10:22 vpn-gateway app[4000]: INFO User user4 logged out
+
+Jan 12 09:15:00 vpn-gateway nginx[3000]: 192.168.1.30 - - [12/Jan/2026:09:15:00 +0000] "POST /login HTTP/1.1" 200 1024
+Jan 12 09:20:10 vpn-gateway sshd[1003]: Failed password for invalid user root from 10.0.0.10 port 33333 ssh2
+Jan 12 09:20:12 vpn-gateway sshd[1003]: Connection closed by 10.0.0.10 port 33333
+
+Jan 12 09:25:33 vpn-gateway openvpn[2000]: user5 CONNECTED, assigned IP 10.8.0.5
+Jan 12 09:55:44 vpn-gateway openvpn[2000]: user5 DISCONNECTED
+Jan 12 09:56:10 vpn-gateway app[4000]: INFO User user4 logged in from 192.168.1.52
+
+Jan 12 10:00:00 vpn-gateway cron[900]: (root) CMD (backup.sh)
+Jan 12 10:05:12 vpn-gateway sshd[1004]: Accepted password for user1 from 192.168.1.10 port 50003 ssh2
+Jan 12 10:05:13 vpn-gateway systemd-logind[500]: New session 3 of user user1.
+Jan 12 10:25:22 vpn-gateway sshd[1004]: Disconnected from user user1 192.168.1.10 port 50003
+Jan 12 10:25:23 vpn-gateway systemd-logind[500]: Removed session 3.
+
+Jan 12 10:30:00 vpn-gateway app[4000]: ERROR Database connection failed
+Jan 12 10:32:11 vpn-gateway kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=10.0.0.3 DST=192.168.1.1
+
+Jan 12 10:40:44 vpn-gateway sshd[1005]: Accepted publickey for user6 from 192.168.1.60 port 50004 ssh2
+Jan 12 10:40:45 vpn-gateway systemd-logind[500]: New session 4 of user user6.
+
+Jan 12 11:00:00 vpn-gateway nginx[3000]: 192.168.1.40 - - [12/Jan/2026:11:00:00 +0000] "GET /dashboard HTTP/1.1" 200 2048
+Jan 12 11:10:10 vpn-gateway app[4000]: WARN Invalid session token for user7
+
+Jan 12 11:20:20 vpn-gateway openvpn[2000]: user8 CONNECTED, assigned IP 10.8.0.8
+Jan 12 11:50:50 vpn-gateway openvpn[2000]: user8 DISCONNECTED
+
+Jan 12 12:00:00 vpn-gateway cron[900]: (root) CMD (rotate_logs.sh)
+Jan 12 12:05:01 vpn-gateway sshd[1006]: Accepted password for user9 from 192.168.1.90 port 50005 ssh2
+Jan 12 12:05:02 vpn-gateway systemd-logind[500]: New session 5 of user user9.
+Jan 12 12:45:33 vpn-gateway sshd[1006]: Disconnected from user user9 192.168.1.90 port 50005
+Jan 12 12:45:34 vpn-gateway systemd-logind[500]: Removed session 5.
+
+Jan 12 13:00:00 vpn-gateway systemd[1]: Started Daily Job.
+Jan 12 13:10:10 vpn-gateway nginx[3000]: 192.168.1.55 - - [12/Jan/2026:13:10:10 +0000] "GET /api HTTP/1.1" 500 256
+
+Jan 12 13:20:20 vpn-gateway app[4000]: INFO User user10 logged in from 192.168.1.100
+Jan 12 14:00:00 vpn-gateway cron[900]: (root) CMD (cleanup.sh)
+Jan 12 14:05:40 vpn-gateway app[4000]: INFO User user10 logged out
+Jan 12 14:05:05 vpn-gateway sshd[1007]: Accepted password for user11 from 192.168.1.110 port 50006 ssh2
+Jan 12 14:05:06 vpn-gateway systemd-logind[500]: New session 6 of user user11.
+Jan 12 14:45:45 vpn-gateway sshd[1007]: Disconnected from user user11 192.168.1.110 port 50006
+Jan 12 14:45:46 vpn-gateway systemd-logind[500]: Removed session 6.
+
+Jan 12 15:00:00 vpn-gateway systemd[1]: Started Cleanup Job.
+Jan 12 15:10:10 vpn-gateway nginx[3000]: 192.168.1.60 - - [12/Jan/2026:15:10:10 +0000] "GET /health HTTP/1.1" 200 64
+
+Jan 12 15:15:15 vpn-gateway openvpn[2000]: user12 CONNECTED, assigned IP 10.8.0.12
+Jan 12 15:55:55 vpn-gateway openvpn[2000]: user12 DISCONNECTED
+Jan 12 15:56:22 vpn-gateway app[4000]: INFO User user4 logged out
+
+Jan 12 16:00:00 vpn-gateway cron[900]: (root) CMD (db_backup.sh)
+Jan 12 16:05:05 vpn-gateway sshd[1008]: Accepted publickey for user13 from 192.168.1.120 port 50007 ssh2
+Jan 12 16:05:06 vpn-gateway systemd-logind[500]: New session 7 of user user13.
+Jan 12 16:35:35 vpn-gateway sshd[1008]: Disconnected from user user13 192.168.1.120 port 50007
+Jan 12 16:35:36 vpn-gateway systemd-logind[500]: Removed session 7.
+
+Jan 12 17:00:00 vpn-gateway systemd[1]: Started Evening Job.
+Jan 12 17:10:10 vpn-gateway nginx[3000]: 192.168.1.70 - - [12/Jan/2026:17:10:10 +0000] "GET /stats HTTP/1.1" 200 512
+
+Jan 12 17:20:20 vpn-gateway app[4000]: ERROR Timeout while processing request
+Jan 12 17:30:30 vpn-gateway kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=10.0.0.9 DST=192.168.1.1
+
+Jan 12 17:32:10 vpn-gateway sshd[2001]: Accepted password for user14 from 192.168.1.130 port 51001 ssh2
+Jan 12 17:32:11 vpn-gateway systemd-logind[500]: New session 8 of user user14.
+Jan 12 17:40:45 vpn-gateway nginx[3000]: 192.168.1.130 - - [12/Jan/2026:17:40:45 +0000] "GET /profile HTTP/1.1" 200 1024
+Jan 12 17:50:22 vpn-gateway sshd[2001]: Disconnected from user user14 192.168.1.130 port 51001
+Jan 12 17:50:23 vpn-gateway systemd-logind[500]: Removed session 8.
+
+Jan 12 18:00:00 vpn-gateway cron[900]: (root) CMD (hourly_check.sh)
+Jan 12 18:05:05 vpn-gateway openvpn[2000]: user15 CONNECTED, assigned IP 10.8.0.15
+Jan 12 18:10:10 vpn-gateway kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=10.0.0.10 DST=192.168.1.1
+Jan 12 18:35:35 vpn-gateway openvpn[2000]: user15 DISCONNECTED
+
+Jan 12 18:40:40 vpn-gateway app[4000]: INFO User user16 logged in from 192.168.1.140
+
+
+Jan 12 19:00:00 vpn-gateway systemd[1]: Started Log Rotation Service.
+Jan 12 19:05:12 vpn-gateway sshd[2002]: Accepted publickey for user17 from 192.168.1.150 port 51002 ssh2
+Jan 12 19:05:13 vpn-gateway systemd-logind[500]: New session 9 of user user17.
+Jan 12 19:25:25 vpn-gateway sshd[2002]: Disconnected from user user17 192.168.1.150 port 51002
+Jan 12 19:25:26 vpn-gateway systemd-logind[500]: Removed session 9.
+Jan 12 19:25:55 vpn-gateway app[4000]: INFO User user16 logged out
+
+Jan 12 19:30:30 vpn-gateway nginx[3000]: 192.168.1.160 - - [12/Jan/2026:19:30:30 +0000] "POST /api/login HTTP/1.1" 401 256
+Jan 12 19:35:35 vpn-gateway sshd[2003]: Failed password for user18 from 10.0.0.20 port 52000 ssh2
+Jan 12 19:35:36 vpn-gateway sshd[2003]: Connection closed by 10.0.0.20 port 52000
+
+Jan 12 19:40:40 vpn-gateway openvpn[2000]: user19 CONNECTED, assigned IP 10.8.0.19
+Jan 12 20:10:10 vpn-gateway openvpn[2000]: user19 DISCONNECTED
+
+Jan 12 20:15:15 vpn-gateway cron[900]: (root) CMD (security_scan.sh)
+Jan 12 20:20:20 vpn-gateway app[4000]: WARN Suspicious activity detected for user20
+
+Jan 12 20:25:25 vpn-gateway sshd[2004]: Accepted password for user21 from 192.168.1.170 port 51003 ssh2
+Jan 12 20:25:26 vpn-gateway systemd-logind[500]: New session 10 of user user21.
+Jan 12 21:05:05 vpn-gateway sshd[2004]: Disconnected from user user21 192.168.1.170 port 51003
+Jan 12 21:05:06 vpn-gateway systemd-logind[500]: Removed session 10.
+
+Jan 12 21:10:10 vpn-gateway nginx[3000]: 192.168.1.180 - - [12/Jan/2026:21:10:10 +0000] "GET /settings HTTP/1.1" 200 768
+
+Jan 12 21:15:15 vpn-gateway openvpn[2000]: user22 CONNECTED, assigned IP 10.8.0.22
+Jan 12 21:45:45 vpn-gateway openvpn[2000]: user22 DISCONNECTED
+
+Jan 12 21:50:50 vpn-gateway app[4000]: ERROR Failed to send email notification
+
+Jan 12 22:00:00 vpn-gateway systemd[1]: Started Nightly Maintenance.
+Jan 12 22:05:05 vpn-gateway sshd[2005]: Accepted publickey for user23 from 192.168.1.190 port 51004 ssh2
+Jan 12 22:05:06 vpn-gateway systemd-logind[500]: New session 11 of user user23.
+
+Jan 12 22:15:15 vpn-gateway kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=10.0.0.11 DST=192.168.1.1
+Jan 12 22:20:20 vpn-gateway nginx[3000]: 192.168.1.200 - - [12/Jan/2026:22:20:20 +0000] "GET /status HTTP/1.1" 200 128
+
+Jan 12 22:25:25 vpn-gateway sshd[2005]: Disconnected from user user23 192.168.1.190 port 51004
+Jan 12 22:25:26 vpn-gateway systemd-logind[500]: Removed session 11.
+
+Jan 12 22:30:00 vpn-gateway cron[900]: (root) CMD (night_cleanup.sh)
+Jan 12 22:35:35 vpn-gateway openvpn[2000]: user24 CONNECTED, assigned IP 10.8.0.24
+Jan 12 22:50:50 vpn-gateway openvpn[2000]: user24 DISCONNECTED
+
+Jan 12 23:00:00 vpn-gateway systemd[1]: Started Night Audit Service.
+Jan 12 23:05:05 vpn-gateway sshd[3001]: Accepted password for user25 from 192.168.1.201 port 52001 ssh2
+Jan 12 23:05:06 vpn-gateway systemd-logind[500]: New session 12 of user user25.
+Jan 12 23:20:20 vpn-gateway sshd[3001]: Disconnected from user user25 192.168.1.201 port 52001
+Jan 12 23:20:21 vpn-gateway systemd-logind[500]: Removed session 12.
+
+Jan 12 23:25:25 vpn-gateway nginx[3000]: 192.168.1.202 - - [12/Jan/2026:23:25:25 +0000] "GET /night HTTP/1.1" 200 333
+Jan 12 23:30:30 vpn-gateway kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=10.0.0.12 DST=192.168.1.1
+
+Jan 12 23:40:40 vpn-gateway app[4000]: INFO User user26 logged in from 192.168.1.203
+Jan 13 00:10:10 vpn-gateway app[4000]: INFO User user26 logged out
+
+Jan 13 00:15:15 vpn-gateway cron[900]: (root) CMD (midnight_backup.sh)
+Jan 13 00:20:20 vpn-gateway sshd[3002]: Accepted publickey for user27 from 192.168.1.204 port 52002 ssh2
+Jan 13 00:20:21 vpn-gateway systemd-logind[500]: New session 13 of user user27.
+
+Jan 13 00:40:40 vpn-gateway nginx[3000]: 192.168.1.205 - - [13/Jan/2026:00:40:40 +0000] "GET /metrics HTTP/1.1" 200 1024
+
+Jan 13 01:00:00 vpn-gateway systemd[1]: Started Hourly Maintenance.
+Jan 13 01:05:05 vpn-gateway openvpn[2000]: user28 CONNECTED, assigned IP 10.8.0.28
+Jan 13 01:35:35 vpn-gateway openvpn[2000]: user28 DISCONNECTED
+
+Jan 13 01:40:40 vpn-gateway sshd[3003]: Failed password for invalid user test from 10.0.0.30 port 53000 ssh2
+Jan 13 01:40:41 vpn-gateway sshd[3003]: Connection closed by 10.0.0.30 port 53000
+
+Jan 13 02:00:00 vpn-gateway cron[900]: (root) CMD (rotate_logs.sh)
+Jan 13 02:05:05 vpn-gateway app[4000]: WARN Memory usage high
+
+Jan 13 02:10:10 vpn-gateway sshd[3004]: Accepted password for user29 from 192.168.1.206 port 52003 ssh2
+Jan 13 02:10:11 vpn-gateway systemd-logind[500]: New session 14 of user user29.
+Jan 13 02:30:30 vpn-gateway sshd[3004]: Disconnected from user user29 192.168.1.206 port 52003
+Jan 13 02:30:31 vpn-gateway systemd-logind[500]: Removed session 14.
+
+Jan 13 03:00:00 vpn-gateway systemd[1]: Started Disk Check Service.
+Jan 13 03:10:10 vpn-gateway kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00 SRC=10.0.0.13 DST=192.168.1.1
+
+Jan 13 03:20:20 vpn-gateway openvpn[2000]: user30 CONNECTED, assigned IP 10.8.0.30
+Jan 13 03:50:50 vpn-gateway openvpn[2000]: user30 DISCONNECTED
+
+Jan 13 04:00:00 vpn-gateway cron[900]: (root) CMD (db_backup.sh)
+Jan 13 04:05:05 vpn-gateway sshd[3005]: Accepted publickey for user31 from 192.168.1.207 port 52004 ssh2
+Jan 13 04:05:06 vpn-gateway systemd-logind[500]: New session 15 of user user31.
+Jan 13 04:25:25 vpn-gateway sshd[3005]: Disconnected from user user31 192.168.1.207 port 52004
+Jan 13 04:25:26 vpn-gateway systemd-logind[500]: Removed session 15.
+
+Jan 13 04:30:30 vpn-gateway nginx[3000]: 192.168.1.208 - - [13/Jan/2026:04:30:30 +0000] "GET /health HTTP/1.1" 200 64
+
+Jan 13 05:00:00 vpn-gateway systemd[1]: Started Early Morning Tasks.
+Jan 13 05:05:05 vpn-gateway openvpn[2000]: user32 CONNECTED, assigned IP 10.8.0.32
+Jan 13 05:45:45 vpn-gateway openvpn[2000]: user32 DISCONNECTED
+
+Jan 13 06:00:00 vpn-gateway cron[900]: (root) CMD (cleanup.sh)
+Jan 13 06:10:10 vpn-gateway app[4000]: ERROR Disk space critically low
+
+Jan 13 06:20:20 vpn-gateway sshd[3006]: Accepted password for user33 from 192.168.1.209 port 52005 ssh2
+Jan 13 06:20:21 vpn-gateway systemd-logind[500]: New session 16 of user user33.
+Jan 13 06:50:50 vpn-gateway sshd[3006]: Disconnected from user user33 192.168.1.209 port 52005
+Jan 13 06:50:51 vpn-gateway systemd-logind[500]: Removed session 16.
+
+Jan 13 07:00:00 vpn-gateway systemd[1]: Started Morning Jobs.
+Jan 13 07:10:10 vpn-gateway nginx[3000]: 192.168.1.210 - - [13/Jan/2026:07:10:10 +0000] "GET /login HTTP/1.1" 200 512
+
+Jan 13 07:20:20 vpn-gateway openvpn[2000]: user34 CONNECTED, assigned IP 10.8.0.34
+Jan 13 07:55:55 vpn-gateway openvpn[2000]: user34 DISCONNECTED
+
+Jan 13 08:00:00 vpn-gateway cron[900]: (root) CMD (morning_report.sh)
+Jan 13 08:05:05 vpn-gateway sshd[3007]: Accepted publickey for user35 from 192.168.1.211 port 52006 ssh2
+Jan 13 08:05:06 vpn-gateway systemd-logind[500]: New session 17 of user user35.
+Jan 13 08:20:20 vpn-gateway nginx[3000]: 192.168.1.212 - - [13/Jan/2026:08:20:20 +0000] "GET /dashboard HTTP/1.1" 200 2048
