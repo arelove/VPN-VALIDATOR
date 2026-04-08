@@ -150,9 +150,10 @@ async function saveEvents(events: VpnEvent[]): Promise<void> {
       // Записываем событие
       await client.query(
         `INSERT INTO events (user_id, event_type, level, ip_address, message, timestamp)
-         VALUES ($1, $2, $3, $4, $5, $6)`,
+        VALUES ($1, $2, $3, $4, $5, $6)
+        ON CONFLICT DO NOTHING`,
         [userId, event.eventType, event.level, event.ipAddress, event.message, event.timestamp]
-      );
+    );
     }
 
     console.log('✓ Events saved to DB');
