@@ -1,13 +1,11 @@
 import Fastify from 'fastify';
-import fastifyStatic from '@fastify/static';
-import path from 'path';
+import fastifyCors from '@fastify/cors';
 import { pool, initDb } from './db';
 
 const app = Fastify({ logger: false });
 
-// Раздаём фронтенд из public/
-app.register(fastifyStatic, {
-  root: path.join(process.cwd(), 'public'),
+app.register(fastifyCors, {
+  origin: ['http://localhost:3001'],
 });
 
 // Все сессии с именем пользователя
@@ -55,18 +53,17 @@ app.get('/api/stats', async (_, reply) => {
   ]);
 
   return reply.send({
-    totalUsers:         Number(users.rows[0].count),
-    totalEvents:        Number(events.rows[0].count),
-    totalErrors:        Number(errors.rows[0].count),
-    avgSessionSec:      Number(avgSession.rows[0].avg_sec),
+    totalUsers:    Number(users.rows[0].count),
+    totalEvents:   Number(events.rows[0].count),
+    totalErrors:   Number(errors.rows[0].count),
+    avgSessionSec: Number(avgSession.rows[0].avg_sec),
   });
 });
 
-// Запуск
 const start = async () => {
   await initDb();
   await app.listen({ port: 3000, host: '0.0.0.0' });
-  console.log('Server running at http://localhost:3000');
+  console.log('Backend running at http://localhost:3000');
 };
 
 start();
