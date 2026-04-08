@@ -1,5 +1,15 @@
 ﻿# Changelog
 
+## [1.1.0] --- 2026-04-08
+
+### Добавлено
+
+- Подключение к PostgreSQL через pg.Pool (src/db.ts)
+- Таблицы users, events, sessions с CREATE TABLE IF NOT EXISTS
+- Upsert пользователей через ON CONFLICT (username) DO UPDATE
+
+---
+
 ## [1.0.0] --- 2026-04-08
 
 ### Добавлено
