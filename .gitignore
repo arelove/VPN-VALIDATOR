@@ -1,7 +1,7 @@
 node_modules/
 dashboard/node_modules/
 dashboard/.next/
-dasboard/.env
+dashboard/.env.local
 dashboard/dist/
 dashboard/.DS_Store
 dashboard/env.local
