@@ -63,10 +63,10 @@ export function parseLine(line: string): VpnEvent | null {
     // Пользователь подключился к VPN
     // Пример: "User user4 logged in from 192.168.1.50"
     eventType = 'LOGIN';
-    const loginMatch = message.match(/User (\S+) logged in from ([\d.]+)/);
+    const loginMatch = message.match(/User (\S+) logged in(?:\s+from\s+([\d.]+))?/);
     if (loginMatch) {
-      username = loginMatch[1] ?? null;
-      ipAddress = loginMatch[2] ?? null;
+    username = loginMatch[1] ?? null;
+    ipAddress = loginMatch[2] ?? null; // undefined → null если IP нет
     }
   } else if (message.includes('logged out')) {
     // Пользователь отключился от VPN
