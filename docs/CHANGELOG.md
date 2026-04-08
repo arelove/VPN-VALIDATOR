@@ -1,5 +1,23 @@
 ﻿# Changelog
 
+## [2.0.0] --- 2026-04-08
+
+### Добавлено
+
+- Next.js 15 dashboard (dashboard/) на App Router + TypeScript
+- Три страницы: / (дашборд), /events (события), /chart (аналитика)
+- Компоненты: StatCards, SessionsTable, EventsTable, UserBarChart
+- Типизированный API-клиент lib/api.ts с интерфейсами Session, VpnEvent, Stats
+- Навигация с подсветкой активного роута через usePathname
+- Поддержка тёмной темы через prefers-color-scheme
+- CORS в Fastify (src/server.ts) для поддержки dashboard на порту 3001
+
+### Исправлено
+
+- Повторный запуск парсера больше не падает: добавлен ON CONFLICT DO NOTHING в INSERT events
+
+---
+
 ## [1.2.0] --- 2026-04-08
 
 ### Добавлено
