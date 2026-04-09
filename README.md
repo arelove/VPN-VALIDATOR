@@ -1,7 +1,7 @@
 
 # VPN-VALIDATOR
 
-![Dashboard](docs/screenshot.png)
+![Dashboard](docs/dashboard.png)
 
 Парсер и дашборд для анализа логов VPN-агента в формате syslog.
 
