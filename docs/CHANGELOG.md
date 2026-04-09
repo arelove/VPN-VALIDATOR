@@ -1,5 +1,30 @@
 ﻿# Changelog
 
+## [2.2.0] --- 2026-04-09
+
+### Добавлено
+
+- Блок "Требует внимания" на главной странице — WARN/ERROR события с подсветкой
+- Тесты компонентов фронтенда (StatCards, SessionsTable, EventsTable) — 14 кейсов
+- Скрипты `dev`, `dashboard`, `test:frontend`, `test:all` в корневом package.json
+- Страницы `loading.tsx`, `error.tsx`, `not-found.tsx` в дашборде
+- Кастомный скроллбар в глобальных стилях
+- Лицензия MIT и badges в README
+- Скриншот дашборда в docs/
+
+### Исправлено
+
+- Разделены конфиги vitest для backend и frontend
+- CI обновлён: отдельные шаги для backend и frontend тестов
+- NODE_ENV=development в CI для корректной установки devDependencies
+
+### Инфраструктура
+
+- Prettier покрывает dashboard/**/*.tsx
+- Обновлён README — скрипты запуска, скриншот, badges
+
+---
+
 ## [2.1.0] --- 2026-04-09
 
 ### Добавлено
