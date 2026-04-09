@@ -52,7 +52,7 @@ describe('EventsTable', () => {
     expect(infoBadges.length).toBeGreaterThan(0);
     const errorBadges = screen.getAllByText('ERROR');
     expect(errorBadges.length).toBeGreaterThan(0);
-    });
+  });
 
   it('показывает "Ничего не найдено" при пустом результате', () => {
     render(<EventsTable events={mockEvents} />);
