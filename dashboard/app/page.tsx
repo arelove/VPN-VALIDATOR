@@ -12,11 +12,7 @@ function fmtTime(iso: string): string {
 }
 
 export default async function DashboardPage() {
-  const [stats, sessions, events] = await Promise.all([
-    api.stats(),
-    api.sessions(),
-    api.events(),
-  ]);
+  const [stats, sessions, events] = await Promise.all([api.stats(), api.sessions(), api.events()]);
 
   const alerts = events.filter((e) => e.level === 'ERROR' || e.level === 'WARN');
 

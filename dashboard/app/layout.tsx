@@ -38,7 +38,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
 
           <Nav />
-
         </header>
         <main style={{ maxWidth: 1100, margin: '0 auto', padding: '1.5rem' }}>{children}</main>
       </body>

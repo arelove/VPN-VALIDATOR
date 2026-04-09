@@ -66,6 +66,8 @@ system.log        — имитация логов VPN-агента
 | `npm run server` | Только API сервер |
 | `npm run dashboard` | Только дашборд |
 | `npm test` | Запуск тестов |
+| `npm run test:frontend` | Тесты фронтенда |
+| `npm run test:all` | Все тесты (backend + frontend) |
 | `npm run format` | Форматирование кода |
 
 ## API
