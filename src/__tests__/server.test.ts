@@ -36,10 +36,15 @@ describe('GET /api/sessions', () => {
   it('возвращает массив сессий', async () => {
     (pool.query as any).mockResolvedValueOnce({
       rows: [
-        { id: 1, username: 'user4', ip_address: '192.168.1.50',
-          login_at: '2026-01-12T08:50:10Z', logout_at: '2026-01-12T09:10:22Z',
-          duration_sec: 1212 }
-      ]
+        {
+          id: 1,
+          username: 'user4',
+          ip_address: '192.168.1.50',
+          login_at: '2026-01-12T08:50:10Z',
+          logout_at: '2026-01-12T09:10:22Z',
+          duration_sec: 1212,
+        },
+      ],
     });
 
     const app = buildApp();
@@ -57,11 +62,16 @@ describe('GET /api/events', () => {
   it('возвращает массив событий', async () => {
     (pool.query as any).mockResolvedValueOnce({
       rows: [
-        { id: 1, username: 'user4', event_type: 'LOGIN',
-          level: 'INFO', ip_address: '192.168.1.50',
+        {
+          id: 1,
+          username: 'user4',
+          event_type: 'LOGIN',
+          level: 'INFO',
+          ip_address: '192.168.1.50',
           message: 'User user4 logged in from 192.168.1.50',
-          timestamp: '2026-01-12T08:50:10Z' }
-      ]
+          timestamp: '2026-01-12T08:50:10Z',
+        },
+      ],
     });
 
     const app = buildApp();

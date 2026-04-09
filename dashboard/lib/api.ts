@@ -33,7 +33,7 @@ async function apiFetch<T>(path: string): Promise<T> {
 }
 
 export const api = {
-  stats: ()    => apiFetch<Stats>('/api/stats'),
+  stats: () => apiFetch<Stats>('/api/stats'),
   sessions: () => apiFetch<Session[]>('/api/sessions'),
-  events: ()   => apiFetch<VpnEvent[]>('/api/events'),
+  events: () => apiFetch<VpnEvent[]>('/api/events'),
 };

@@ -4,8 +4,8 @@ import EventsTable from '@/components/EventsTable';
 export default async function EventsPage() {
   const events = await api.events();
 
-  const errorCount = events.filter(e => e.level === 'ERROR').length;
-  const warnCount  = events.filter(e => e.level === 'WARN').length;
+  const errorCount = events.filter((e) => e.level === 'ERROR').length;
+  const warnCount = events.filter((e) => e.level === 'WARN').length;
 
   return (
     <>

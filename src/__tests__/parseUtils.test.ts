@@ -4,7 +4,6 @@ import { parseLine, resolveYear } from '../parseUtils';
 // ─── parseLine ────────────────────────────────────────────────
 
 describe('parseLine', () => {
-
   it('возвращает null для строк не от app[]', () => {
     const lines = [
       'Jan 12 08:00:01 vpn-gateway systemd[1]: Started Session Manager.',
@@ -13,11 +12,12 @@ describe('parseLine', () => {
       '',
       '   ',
     ];
-    lines.forEach(line => expect(parseLine(line)).toBeNull());
+    lines.forEach((line) => expect(parseLine(line)).toBeNull());
   });
 
   it('парсит LOGIN событие', () => {
-    const line = 'Jan 12 08:50:10 vpn-gateway app[4000]: INFO User user4 logged in from 192.168.1.50';
+    const line =
+      'Jan 12 08:50:10 vpn-gateway app[4000]: INFO User user4 logged in from 192.168.1.50';
     const event = parseLine(line);
 
     expect(event).not.toBeNull();
@@ -71,7 +71,8 @@ describe('parseLine', () => {
   });
 
   it('корректно парсит timestamp', () => {
-    const line = 'Jan 12 08:50:10 vpn-gateway app[4000]: INFO User user4 logged in from 192.168.1.50';
+    const line =
+      'Jan 12 08:50:10 vpn-gateway app[4000]: INFO User user4 logged in from 192.168.1.50';
     const event = parseLine(line);
     expect(event!.timestamp).toBeInstanceOf(Date);
     expect(event!.timestamp.getMonth()).toBe(0); // январь = 0
@@ -87,7 +88,8 @@ describe('parseLine', () => {
   });
 
   it('parses строки с разными PID у app', () => {
-    const line = 'Jan 12 09:56:10 vpn-gateway app[9999]: INFO User user4 logged in from 192.168.1.52';
+    const line =
+      'Jan 12 09:56:10 vpn-gateway app[9999]: INFO User user4 logged in from 192.168.1.52';
     const event = parseLine(line);
     expect(event).not.toBeNull();
     expect(event!.username).toBe('user4');
@@ -122,8 +124,12 @@ describe('parseLine — edge cases', () => {
 // ─── resolveYear ─────────────────────────────────────────────
 
 describe('resolveYear', () => {
-  beforeEach(() => { vi.useFakeTimers(); });
-  afterEach(() => { vi.useRealTimers(); });
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+  afterEach(() => {
+    vi.useRealTimers();
+  });
 
   it('возвращает текущий год в обычных условиях', () => {
     vi.setSystemTime(new Date('2026-04-09T10:00:00'));

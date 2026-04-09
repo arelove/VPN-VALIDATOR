@@ -9,7 +9,7 @@ export interface VpnEvent {
   timestamp: Date;
   level: EventLevel;
   eventType: EventType;
-  username: string | null;  // null для системных событий без пользователя
+  username: string | null; // null для системных событий без пользователя
   ipAddress: string | null; // присутствует только в LOGIN
   message: string;
 }
@@ -65,8 +65,8 @@ export function parseLine(line: string): VpnEvent | null {
     eventType = 'LOGIN';
     const loginMatch = message.match(/User (\S+) logged in(?:\s+from\s+([\d.]+))?/);
     if (loginMatch) {
-    username = loginMatch[1] ?? null;
-    ipAddress = loginMatch[2] ?? null; // undefined → null если IP нет
+      username = loginMatch[1] ?? null;
+      ipAddress = loginMatch[2] ?? null; // undefined → null если IP нет
     }
   } else if (message.includes('logged out')) {
     // Пользователь отключился от VPN

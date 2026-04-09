@@ -5,7 +5,6 @@ import * as path from 'path';
 import { parseLine, VpnEvent } from './parseUtils';
 import { pool, initDb } from './db';
 
-
 // Читаем файл построчно через stream — не грузим весь лог в память сразу.
 // Важно для больших файлов в реальных условиях (например логи VPN-агента).
 async function parseLogFile(filePath: string): Promise<VpnEvent[]> {
@@ -56,7 +55,7 @@ async function saveEvents(events: VpnEvent[]): Promise<void> {
         VALUES ($1, $2, $3, $4, $5, $6)
         ON CONFLICT DO NOTHING`,
         [userId, event.eventType, event.level, event.ipAddress, event.message, event.timestamp]
-    );
+      );
     }
 
     console.log('✓ Events saved to DB');
@@ -88,7 +87,6 @@ async function saveEvents(events: VpnEvent[]): Promise<void> {
     client.release();
   }
 }
-
 
 ///////////////// Запуск парсинга ////////////////////
 

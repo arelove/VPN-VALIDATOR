@@ -4,8 +4,8 @@ import UserBarChart from '@/components/UserBarChart';
 export default async function ChartPage() {
   const sessions = await api.sessions();
 
-  const userCount = new Set(sessions.map(s => s.username)).size;
-  const totalMin  = Math.round(sessions.reduce((acc, s) => acc + (s.duration_sec ?? 0), 0) / 60);
+  const userCount = new Set(sessions.map((s) => s.username)).size;
+  const totalMin = Math.round(sessions.reduce((acc, s) => acc + (s.duration_sec ?? 0), 0) / 60);
 
   return (
     <>

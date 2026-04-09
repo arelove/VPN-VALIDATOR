@@ -31,7 +31,6 @@ export function buildApp() {
   });
 
   app.get('/api/stats', async (_, reply) => {
-
     try {
       const [users, events, errors, avgSession] = await Promise.all([
         pool.query(`SELECT COUNT(DISTINCT id) AS count FROM users`),
@@ -40,13 +39,13 @@ export function buildApp() {
         pool.query(`SELECT ROUND(AVG(duration_sec)) AS avg_sec FROM sessions`),
       ]);
       return reply.send({
-        totalUsers:    Number(users.rows[0].count),
-        totalEvents:   Number(events.rows[0].count),
-        totalErrors:   Number(errors.rows[0].count),
+        totalUsers: Number(users.rows[0].count),
+        totalEvents: Number(events.rows[0].count),
+        totalErrors: Number(errors.rows[0].count),
         avgSessionSec: Number(avgSession.rows[0].avg_sec),
       });
-      } catch (err) {
-        reply.status(500).send({ error: 'Database error' });
+    } catch (err) {
+      reply.status(500).send({ error: 'Database error' });
     }
   });
 

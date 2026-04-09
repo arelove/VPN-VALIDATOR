@@ -5,26 +5,34 @@ import type { VpnEvent } from '@/lib/api';
 
 function fmtTime(iso: string): string {
   return new Date(iso).toLocaleString('ru-RU', {
-    day: '2-digit', month: '2-digit',
-    hour: '2-digit', minute: '2-digit', second: '2-digit',
+    day: '2-digit',
+    month: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
   });
 }
 
 const BADGE: Record<string, { bg: string; text: string }> = {
-  INFO:  { bg: 'var(--info-bg)',    text: 'var(--info-text)' },
-  WARN:  { bg: 'var(--warn-bg)',    text: 'var(--warn-text)' },
-  ERROR: { bg: 'var(--error-bg)',   text: 'var(--error-text)' },
+  INFO: { bg: 'var(--info-bg)', text: 'var(--info-text)' },
+  WARN: { bg: 'var(--warn-bg)', text: 'var(--warn-text)' },
+  ERROR: { bg: 'var(--error-bg)', text: 'var(--error-text)' },
 };
 
 export default function EventsTable({ events }: { events: VpnEvent[] }) {
-  const [query, setQuery]   = useState('');
-  const [level, setLevel]   = useState('');
+  const [query, setQuery] = useState('');
+  const [level, setLevel] = useState('');
 
   const filtered = useMemo(() => {
     const q = query.toLowerCase();
-    return events.filter(e => {
+    return events.filter((e) => {
       if (level && e.level !== level) return false;
-      if (q && !e.message.toLowerCase().includes(q) && !(e.username ?? '').toLowerCase().includes(q)) return false;
+      if (
+        q &&
+        !e.message.toLowerCase().includes(q) &&
+        !(e.username ?? '').toLowerCase().includes(q)
+      )
+        return false;
       return true;
     });
   }, [events, query, level]);
@@ -49,28 +57,44 @@ export default function EventsTable({ events }: { events: VpnEvent[] }) {
   };
 
   const inputStyle: React.CSSProperties = {
-    background: 'var(--bg)', border: '0.5px solid var(--border)',
-    borderRadius: 'var(--radius-sm)', padding: '5px 10px',
-    fontSize: 13, color: 'var(--text)', outline: 'none',
+    background: 'var(--bg)',
+    border: '0.5px solid var(--border)',
+    borderRadius: 'var(--radius-sm)',
+    padding: '5px 10px',
+    fontSize: 13,
+    color: 'var(--text)',
+    outline: 'none',
   };
 
   return (
-    <div style={{ background: 'var(--surface)', border: '0.5px solid var(--border)', borderRadius: 'var(--radius)', overflow: 'hidden' }}>
-      <div style={{
-        padding: '0.875rem 1rem',
-        borderBottom: '0.5px solid var(--border)',
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        gap: 12, flexWrap: 'wrap',
-      }}>
+    <div
+      style={{
+        background: 'var(--surface)',
+        border: '0.5px solid var(--border)',
+        borderRadius: 'var(--radius)',
+        overflow: 'hidden',
+      }}
+    >
+      <div
+        style={{
+          padding: '0.875rem 1rem',
+          borderBottom: '0.5px solid var(--border)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 12,
+          flexWrap: 'wrap',
+        }}
+      >
         <div style={{ display: 'flex', gap: 8 }}>
           <input
             type="search"
             placeholder="Поиск по сообщению или пользователю…"
             value={query}
-            onChange={e => setQuery(e.target.value)}
+            onChange={(e) => setQuery(e.target.value)}
             style={{ ...inputStyle, width: 260 }}
           />
-          <select value={level} onChange={e => setLevel(e.target.value)} style={inputStyle}>
+          <select value={level} onChange={(e) => setLevel(e.target.value)} style={inputStyle}>
             <option value="">Все уровни</option>
             <option value="INFO">INFO</option>
             <option value="WARN">WARN</option>
@@ -92,31 +116,67 @@ export default function EventsTable({ events }: { events: VpnEvent[] }) {
           </thead>
           <tbody>
             {filtered.length === 0 ? (
-              <tr><td colSpan={4} style={{ ...tdStyle, textAlign: 'center', color: 'var(--muted)', padding: '2rem' }}>Ничего не найдено</td></tr>
-            ) : filtered.map(e => {
-              const badge = BADGE[e.level] ?? BADGE.INFO;
-              return (
-                <tr key={e.id}
-                  onMouseEnter={ev => (ev.currentTarget.style.background = 'var(--bg)')}
-                  onMouseLeave={ev => (ev.currentTarget.style.background = 'transparent')}
+              <tr>
+                <td
+                  colSpan={4}
+                  style={{
+                    ...tdStyle,
+                    textAlign: 'center',
+                    color: 'var(--muted)',
+                    padding: '2rem',
+                  }}
                 >
-                  <td style={{ ...tdStyle, fontFamily: 'monospace', fontSize: 12, whiteSpace: 'nowrap' }}>
-                    {fmtTime(e.timestamp)}
-                  </td>
-                  <td style={tdStyle}>
-                    <span style={{
-                      display: 'inline-block', fontSize: 11, fontWeight: 500,
-                      padding: '2px 8px', borderRadius: 20,
-                      background: badge.bg, color: badge.text,
-                    }}>{e.level}</span>
-                  </td>
-                  <td style={{ ...tdStyle, whiteSpace: 'nowrap', color: e.username === 'system' ? 'var(--muted)' : 'var(--text)' }}>
-                    {e.username}
-                  </td>
-                  <td style={tdStyle}>{e.message}</td>
-                </tr>
-              );
-            })}
+                  Ничего не найдено
+                </td>
+              </tr>
+            ) : (
+              filtered.map((e) => {
+                const badge = BADGE[e.level] ?? BADGE.INFO;
+                return (
+                  <tr
+                    key={e.id}
+                    onMouseEnter={(ev) => (ev.currentTarget.style.background = 'var(--bg)')}
+                    onMouseLeave={(ev) => (ev.currentTarget.style.background = 'transparent')}
+                  >
+                    <td
+                      style={{
+                        ...tdStyle,
+                        fontFamily: 'monospace',
+                        fontSize: 12,
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {fmtTime(e.timestamp)}
+                    </td>
+                    <td style={tdStyle}>
+                      <span
+                        style={{
+                          display: 'inline-block',
+                          fontSize: 11,
+                          fontWeight: 500,
+                          padding: '2px 8px',
+                          borderRadius: 20,
+                          background: badge.bg,
+                          color: badge.text,
+                        }}
+                      >
+                        {e.level}
+                      </span>
+                    </td>
+                    <td
+                      style={{
+                        ...tdStyle,
+                        whiteSpace: 'nowrap',
+                        color: e.username === 'system' ? 'var(--muted)' : 'var(--text)',
+                      }}
+                    >
+                      {e.username}
+                    </td>
+                    <td style={tdStyle}>{e.message}</td>
+                  </tr>
+                );
+              })
+            )}
           </tbody>
         </table>
       </div>

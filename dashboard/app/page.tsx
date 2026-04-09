@@ -9,7 +9,9 @@ export default async function DashboardPage() {
     <>
       <div style={{ marginBottom: '1.25rem' }}>
         <h1 style={{ fontSize: 18, fontWeight: 500, marginBottom: 4 }}>Дашборд</h1>
-        <p style={{ fontSize: 13, color: 'var(--muted)' }}>Сводка по сессиям и активности за весь период</p>
+        <p style={{ fontSize: 13, color: 'var(--muted)' }}>
+          Сводка по сессиям и активности за весь период
+        </p>
       </div>
 
       <StatCards stats={stats} />
