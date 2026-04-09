@@ -1,6 +1,9 @@
 
 # VPN-VALIDATOR
 
+[![CI](https://github.com/arelove/vpn-validator/actions/workflows/ci.yml/badge.svg)](https://github.com/arelove/vpn-validator/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+
 ![Dashboard](docs/dashboard.png)
 
 Парсер и дашборд для анализа логов VPN-агента в формате syslog.
