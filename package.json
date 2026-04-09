@@ -8,7 +8,10 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "parse": "ts-node src/parse.ts",
-    "server": "ts-node src/server.ts"
+    "server": "ts-node src/server.ts",
+
+    "format": "prettier --write \"src/**/*.ts\" \"dashboard/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"dashboard/**/*.{ts,tsx}\""
   },
   "keywords": [],
   "author": "",
@@ -25,6 +28,7 @@
     "@types/node": "^25.5.2",
     "@types/pg": "^8.20.0",
     "@vitest/coverage-v8": "^4.1.3",
+    "prettier": "^3.8.1",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.2",
     "vitest": "^4.1.3"
