@@ -4,7 +4,6 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'VPN Monitor',
-  description: 'VPN gateway log dashboard',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -40,7 +39,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           <Nav />
 
-          <div style={{ marginLeft: 'auto', fontSize: 12, color: 'var(--muted)' }}>vpn-gateway</div>
         </header>
         <main style={{ maxWidth: 1100, margin: '0 auto', padding: '1.5rem' }}>{children}</main>
       </body>

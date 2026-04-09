@@ -38,7 +38,7 @@ function Card({ label, value, sub, accent }: CardProps) {
           color: 'var(--muted)',
           textTransform: 'uppercase',
           letterSpacing: '0.05em',
-          marginBottom: 4,
+          marginBottom: 2,
         }}
       >
         {label}
