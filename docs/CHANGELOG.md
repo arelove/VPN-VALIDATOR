@@ -1,5 +1,34 @@
 ﻿# Changelog
 
+## [2.1.0] --- 2026-04-09
+
+### Добавлено
+
+- Unit-тесты для parseLine и resolveYear (vitest) — 17 кейсов включая edge cases
+- Интеграционные тесты API эндпоинтов через fastify.inject с моком БД
+- Тесты обработки ошибок БД (500 на всех эндпоинтах)
+- GitHub Actions CI — автозапуск тестов на push/PR в main
+- README с инструкцией по запуску проекта
+
+### Исправлено
+
+- Regex парсинга username из WARN-сообщений (for user7 → user7)
+- LOGIN парсится корректно даже без IP-адреса в сообщении
+
+### Рефакторинг
+
+- buildApp() вынесен из server.ts для возможности тестирования
+- initDb() убран из server.ts — схема БД управляется парсером
+- parseLine и resolveYear вынесены в parseUtils.ts с экспортом
+
+### Инфраструктура
+
+- Удалён пустой public/index.html
+- dashboard/.env.local добавлен в .gitignore
+- Обновлён package-lock.json
+
+---
+
 ## [2.0.0] --- 2026-04-08
 
 ### Добавлено
