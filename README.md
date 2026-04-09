@@ -1,6 +1,7 @@
+
 # VPN-VALIDATOR
 
-Парсер и дашборд для анализа логов VPN-агента.
+Парсер и дашборд для анализа логов VPN-агента в формате syslog.
 
 ## Стек
 
@@ -22,32 +23,31 @@ docker-compose up -d
 cp .env.example .env
 ```
 
-### 3. Парсер — читает system.log, создаёт таблицы и заливает данные
+### 3. Установка зависимостей
 
 ```bash
 npm install
+cd dashboard && npm install && cd ..
+```
+
+### 4. Парсер — создаёт таблицы и заливает данные из system.log
+
+```bash
 npm run parse
 ```
 
-### 4. API сервер
+### 5. Сервер + дашборд одной командой
 
 ```bash
-npm run server
-```
-
-### 5. Дашборд
-
-```bash
-cd dashboard
-npm install
 npm run dev
-
-Открыть: http://localhost:3001
 ```
+
+- API: http://localhost:3000
+- Дашборд: http://localhost:3001
 
 ## Структура
 
-```bash
+```
 src/
   parseUtils.ts   — парсинг строк syslog (фильтрация, regex, типы событий)
   parse.ts        — чтение файла и запись в БД
@@ -56,6 +56,17 @@ src/
 dashboard/        — Next.js дашборд
 system.log        — имитация логов VPN-агента
 ```
+
+## Скрипты
+
+| Команда | Описание |
+|---------|----------|
+| `npm run parse` | Парсинг логов и запись в БД |
+| `npm run dev` | Запуск сервера и дашборда |
+| `npm run server` | Только API сервер |
+| `npm run dashboard` | Только дашборд |
+| `npm test` | Запуск тестов |
+| `npm run format` | Форматирование кода |
 
 ## API
 
