@@ -7,6 +7,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
+    "test:frontend": "npm run test --prefix dashboard",
+    "test:all": "npm test && npm run test:frontend",
     "parse": "ts-node src/parse.ts",
     "server": "ts-node src/server.ts",
     "dashboard": "npm run dev --prefix dashboard",
